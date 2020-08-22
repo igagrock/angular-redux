@@ -1,0 +1,12 @@
+<div class="card shadow-sm"
+     *ngIf="user">
+    <img class="card-img-top image-thumbnail"
+         [src]="user.avatar"
+         alt="Card image cap"
+         style="width: 100%;">
+    <div class="card-body ">
+        <h6 class="card-title">{{user.first_name}} - {{user.last_name}}</h6>
+        <p>{{user.email}}</p>
+    </div>
+
+</div>

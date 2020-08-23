@@ -8,6 +8,10 @@ export const loadUsers = createAction(
     '[users] load users'
 );
 
+export const loadUser = createAction(
+    '[users] load user',
+    props<{ id: number }>()
+);
 /**
  * addUsers action is used to Inform store to add the users to existing state
  */

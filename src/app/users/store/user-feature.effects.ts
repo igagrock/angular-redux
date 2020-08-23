@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects/';
 import { of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { UserRemoteService } from '../user-remote.service';
 import * as UserFeatureActions from './user-feature.actions';
 
@@ -33,5 +33,16 @@ export class UserFeatureEffects {
             )
         ),
 
+    ));
+
+    loadUser$ = createEffect(() => this.action$.pipe(
+        ofType(UserFeatureActions.loadUser),
+        mergeMap((action) => this.userRemoteService.user$(action.id)
+            .pipe(
+                tap(user => console.log('loadUser effect called => ', user)),
+                map(user => UserFeatureActions.addUser({ user: user })),
+                catchError((error) => of(error))
+            )
+        ),
     ));
 }

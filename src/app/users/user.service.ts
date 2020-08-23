@@ -17,9 +17,16 @@ export class UserService {
   constructor(
     private store: Store<AppState>
   ) {
+    this.loadUsers();
+  }
 
+  loadUsers() {
     //load users from remote server by informating effects
     this.store.dispatch(UserFeatureActions.loadUsers());
+  }
 
+  loadUser(id: number) {
+    //load user by id from remote server by informating effects
+    this.store.dispatch(UserFeatureActions.loadUser({ id: id }));
   }
 }

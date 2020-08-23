@@ -1,16 +1,11 @@
 <div class="container mt-2">
+
+  <nav class="navbar navbar-light bg-light my-3">
+    <a class="navbar-brand"> Angular-NgRx</a>
+    <a class="btn btn-small btn-dark"
+       [routerLink]="['/users']">users</a>
+  </nav>
   <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body text-center">
-          <h3 class="card-title"> Angular state management using ngRx</h3>
-          <div class="d-flex justify-content-between">
-            <a class="btn btn-small btn-dark"
-               [routerLink]="['/users']">users</a>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-12">
       <router-outlet></router-outlet>
     </div>

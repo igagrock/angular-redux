@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Store, State } from '@ngrx/store';
-import { tap, map } from 'rxjs/operators';
-import { UserFeatureState } from './store/user-feature.reducer';
-import * as UserFeatureActions from './store/user-feature.actions'
+import { select, Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducer';
-
+import * as UserFeatureActions from './store/user-feature.actions';
+import * as UserFeatureSelectors from './store/user-feature.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  users$ = this.store.select('userFeature').pipe(map(state => state.users));
+  users$ = this.store.pipe(select(UserFeatureSelectors.selectUsers))
+  user$ = (id: number) => this.store.pipe(select(UserFeatureSelectors.selectUser, { id: id }))
 
   constructor(
     private store: Store<AppState>

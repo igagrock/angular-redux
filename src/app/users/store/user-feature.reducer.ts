@@ -6,12 +6,10 @@ import { User } from '../user.modal';
 
 export interface UserFeatureState {
     users: User[];
-    selectedUser: User
 }
 
 export const initialState: UserFeatureState = {
     users: null,
-    selectedUser: null
 }
 
 const theReducer = createReducer(
@@ -23,10 +21,6 @@ const theReducer = createReducer(
     on(UserFeatureActions.addUser, (state, { user }) => ({
         ...state,
         users: [...state.users, { ...user }]
-    })),
-    on(UserFeatureActions.selectUser, (state, { selectedUser }) => ({
-        ...state,
-        selectedUser: { ...selectedUser }
     }))
 );
 

@@ -9,14 +9,6 @@ export const loadUsers = createAction(
 );
 
 /**
- * loadUser action is used to inform NgRx effect to load a user with userId from remote system
- */
-export const loadUser = createAction(
-    '[users] load user',
-    props<{ userId: number }>()
-);
-
-/**
  * addUsers action is used to Inform store to add the users to existing state
  */
 export const addUsers = createAction(
@@ -30,9 +22,4 @@ export const addUsers = createAction(
 export const addUser = createAction(
     '[users] add user',
     props<{ user: User }>()
-)
-
-export const selectUser = createAction(
-    '[users] select user',
-    props<{ selectedUser: User }>()
 )

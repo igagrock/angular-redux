@@ -23,3 +23,11 @@ export const addUser = createAction(
     '[users] add user',
     props<{ user: User }>()
 )
+
+/**
+ * createUser action informs effects to save a user in data source
+ */
+export const createUser = createAction(
+    '[users] add user',
+    props<{ user: User }>()
+)

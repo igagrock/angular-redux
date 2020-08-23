@@ -23,4 +23,15 @@ export class UserFeatureEffects {
             )
         )
     ));
+
+    addUser$ = createEffect(() => this.action$.pipe(
+        ofType(UserFeatureActions.createUser),
+        mergeMap((action) => this.userRemoteService.createUser(action.user)
+            .pipe(
+                map(user => UserFeatureActions.addUser({ user: user })),
+                catchError((error) => of(error))
+            )
+        ),
+
+    ));
 }

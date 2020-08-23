@@ -4,11 +4,11 @@ import * as UserFeatureActions from "./user-feature.actions";
 import { User } from '../user.modal';
 
 
-export interface UserFeatureState {
+export interface State {
     users: User[];
 }
 
-export const initialState: UserFeatureState = {
+export const initialState: State = {
     users: null,
 }
 
@@ -29,6 +29,6 @@ const theReducer = createReducer(
  * Note: The exported reducer function is necessary as function calls are not supported the View Engine AOT compiler. 
  * It is no longer required if you use the default Ivy AOT compiler (or JIT).
  */
-export function UserFeatureReducer(state: UserFeatureState = initialState, action: Action) {
+export function UserFeatureReducer(state: State = initialState, action: Action) {
     return theReducer(state, action);
 }

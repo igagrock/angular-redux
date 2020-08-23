@@ -18,14 +18,14 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .pipe(
-        map(params => params.get('id')),
-      )
-      .subscribe(id => {
-        this.user = { ...this.userService.users.find(user => user.id === +id) };
-      }
-      );
+    // this.route.paramMap
+    //   .pipe(
+    //     map(params => params.get('id')),
+    //   )
+    //   .subscribe(id => {
+    //     this.user = { ...this.userService.users.find(user => user.id === +id) };
+    //   }
+    //   );
   }
 
 }

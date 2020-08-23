@@ -8,7 +8,7 @@ const usersUrl = 'https://reqres.in/api/users';
   providedIn: 'root'
 })
 export class UserRemoteService {
-  users: User[];
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,22 +20,16 @@ export class UserRemoteService {
    */
   users$ = this.httpClient.get<{ data: User[] }>(usersUrl)
     .pipe(
-      tap(resp => {
-        console.log('tap response =>', resp);
-
-      }),
-      map(response => response.data),
-      //store users in users array for future use
-      tap(users => this.users = users)
+      map(response => response.data)
     );
 
 
   /** create a new user */
   createUser(user: User) {
-    return this.httpClient.post<User>(usersUrl, user)
-      .pipe(
-        take(1)
-      )
+    return this.httpClient.post<User>(usersUrl, user);
+    // .pipe(
+    //   take(1)
+    // )
   }
 
 
